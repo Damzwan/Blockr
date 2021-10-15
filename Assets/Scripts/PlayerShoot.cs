@@ -38,7 +38,7 @@ public class PlayerShoot : MonoBehaviour
             Plane plane = new Plane(Vector3.up, 0);
             Vector3 worldPosition = new Vector3();
 
-            angle = Mathf.Clamp(angle - Input.mouseScrollDelta.y, 0, 85);
+            angle = Mathf.Clamp(angle - Input.mouseScrollDelta.y, 5, 90);
 
             float distance;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -67,7 +67,7 @@ public class PlayerShoot : MonoBehaviour
     {
         var startPos = t.position;
         var velocity = calculateVelocity();
-        var gravity = new Vector3(0, -9.81f, 0);
+        var gravity = new Vector3(0, -20f, 0); //TODO use gravity of physics engine
 
         var points = new List<Vector3>();
         var time = 0f;
@@ -89,6 +89,7 @@ public class PlayerShoot : MonoBehaviour
         var velocity = calculateVelocity();
         var obj = Instantiate(projectile, t.position, Quaternion.identity);
         obj.GetComponent<Rigidbody>().velocity = velocity;
+        // obj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Force);
     }
 
     Vector3 calculateVelocity()
@@ -102,7 +103,11 @@ public class PlayerShoot : MonoBehaviour
     void freezeCamera()
     {
         cineCam.m_XAxis.m_InputAxisName = "";
+        cineCam.m_XAxis.m_InputAxisValue = 0;
+
         cineCam.m_YAxis.m_InputAxisName = "";
+        cineCam.m_YAxis.m_InputAxisValue = 0;
+
     }
 
     void unFreezeCamera()

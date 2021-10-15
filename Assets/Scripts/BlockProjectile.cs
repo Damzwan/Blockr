@@ -6,6 +6,7 @@ using UnityEngine;
 public class BlockProjectile : MonoBehaviour
 {
     public GameObject cube;
+    private bool alreadyHit;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +20,15 @@ public class BlockProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) return;
-        Instantiate(this.cube, getSpawnPosition(other), other.transform.rotation);
+        if (alreadyHit) return;
+        alreadyHit = true;
         Destroy(gameObject);
+        Instantiate(this.cube, getSpawnPosition(other), other.transform.rotation);
     }
 
     Vector3 getSpawnPosition(Collider other)
     {
-        var dir = (other.transform.position - transform.position ).normalized;
+        var dir = (other.transform.position - transform.position).normalized;
         Vector3 offset;
 
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y) && Mathf.Abs(dir.x) > Mathf.Abs(dir.z))

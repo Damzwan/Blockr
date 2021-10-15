@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     public float jumpHeight = 1.0f;
+    public float gravityScale = 3;
 
     private float turnSmoothVelocity;
     private float gravity = -9.81f;
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform cam;
     private bool groundedPlayer;
     private CharacterController c;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     {
         handleMovement();
     }
+
 
     void handleMovement()
     {
@@ -54,20 +58,18 @@ public class PlayerMovement : MonoBehaviour
         // Jumping & Gravity
         groundedPlayer = c.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0) playerVelocity.y = 0f;
-        playerVelocity.y += gravity * Time.deltaTime; // We move the controller down with gravity
+        playerVelocity.y += gravity * gravityScale * Time.deltaTime; // We move the controller down with gravity
         if (Input.GetButtonDown("Jump") && groundedPlayer) playerVelocity.y += Mathf.Sqrt(jumpHeight * -3 * gravity);
         c.Move(playerVelocity * Time.deltaTime);
-
     }
 
-    // Raycast down from position to see if we would fall below the height parameter
-    private bool outOfBounds(Vector3 pos, float height)
+    public void test()
     {
-        if (Physics.Raycast(pos, Vector3.down, out var hit, 100))
-        {
-            return hit.point.y <= height;
-        }
+        Debug.Log("crazy");
+    }
 
-        return true;
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag($"Interactable")) hit.gameObject.GetComponent<InteractableBlock>().interact(gameObject);
     }
 }
