@@ -6,17 +6,32 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public float angle = 45f;
     public float shootVelocity = 10f;
-    public GameObject projectile;
+    public List<GameObject> projectiles;
 
     private CinemachineFreeLook cineCam; //TODO somewhere else
 
+    private float angle = 45f;
     private Transform t;
     private Camera cam;
     private float timeStep = 0.05f;
     private LineRenderer lr;
     private bool cameraFrozen;
+
+    private int selectedProjectileIndex;
+
+    private KeyCode[] keyCodes =
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5,
+        KeyCode.Alpha6,
+        KeyCode.Alpha7,
+        KeyCode.Alpha8,
+        KeyCode.Alpha9,
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +44,21 @@ public class PlayerShoot : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        handleInput();
+        handleShooting();
+    }
+
+    void handleInput()
+    {
+        for (int i = 0; i < keyCodes.Length; i++)
+        {
+            if (Input.GetKeyDown(keyCodes[i]))
+                selectedProjectileIndex = i > projectiles.Count ? projectiles.Count - 1 : i;
+        }
+    }
+
+    void handleShooting()
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
@@ -52,7 +82,7 @@ public class PlayerShoot : MonoBehaviour
             var trajectoryPoints = calculateTrajectory();
             lr.positionCount = trajectoryPoints.Count;
             lr.SetPositions(trajectoryPoints.ToArray());
-            
+
             if (Input.GetKeyDown(KeyCode.Mouse0)) shoot();
         }
         else
@@ -86,10 +116,9 @@ public class PlayerShoot : MonoBehaviour
 
     void shoot()
     {
-        var velocity = calculateVelocity();
-        var obj = Instantiate(projectile, t.position, Quaternion.identity);
-        obj.GetComponent<Rigidbody>().velocity = velocity;
-        // obj.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Force);
+        var obj = Instantiate(projectiles[selectedProjectileIndex], t.position, Quaternion.identity);
+        obj.GetComponent<Rigidbody>().velocity = calculateVelocity();
+        ;
     }
 
     Vector3 calculateVelocity()
@@ -107,7 +136,6 @@ public class PlayerShoot : MonoBehaviour
 
         cineCam.m_YAxis.m_InputAxisName = "";
         cineCam.m_YAxis.m_InputAxisValue = 0;
-
     }
 
     void unFreezeCamera()

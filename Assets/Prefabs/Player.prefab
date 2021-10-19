@@ -291,9 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ffb7a6b486fa24fa5dd71bd4157ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 45
   shootVelocity: 15
-  projectile: {fileID: 42878554035904027, guid: 130c7253b74ad6a44be180d842a83cd9, type: 3}
+  projectiles:
+  - {fileID: 42878554035904027, guid: 130c7253b74ad6a44be180d842a83cd9, type: 3}
+  - {fileID: 3768163546104402462, guid: 6c8b6a379a74c8e47b8c308239e6ecee, type: 3}
 --- !u!114 &5275449633547426178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8e0bba990b14e478b349b134486945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mass: 10
+  impactConsumptionAmount: 5
   speed: 8
   turnSmoothTime: 0.1
   jumpHeight: 2

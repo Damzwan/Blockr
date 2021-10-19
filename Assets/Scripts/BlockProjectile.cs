@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class BlockProjectile : MonoBehaviour
 {
-    public GameObject cube;
+    public GameObject blockToSpawn;
+
+    private Vector3 originalPos;
+    private float minShootDistance = 1f;
     private bool alreadyHit;
 
     // Start is called before the first frame update
     void Start()
     {
+        originalPos = transform.position;
     }
 
     // Update is called once per frame
@@ -21,9 +25,10 @@ public class BlockProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (alreadyHit) return;
+        if (Vector3.Distance(getSpawnPosition(other), originalPos) < minShootDistance) return;
         alreadyHit = true;
         Destroy(gameObject);
-        Instantiate(this.cube, getSpawnPosition(other), other.transform.rotation);
+        Instantiate(blockToSpawn, getSpawnPosition(other), other.transform.rotation);
     }
 
     Vector3 getSpawnPosition(Collider other)

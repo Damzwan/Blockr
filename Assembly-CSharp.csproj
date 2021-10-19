@@ -53,10 +53,13 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Blocks\JumpBlock.cs" />
      <Compile Include="Assets\Scripts\BlockProjectile.cs" />
      <Compile Include="Assets\Scripts\PlayerShoot.cs" />
      <Compile Include="Assets\Scripts\InteractableBlock.cs" />
-     <Compile Include="Assets\Scripts\JumpBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\StatisBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\SpeedBlock.cs" />
+     <None Include="Assets\FREE Skyboxes - Sci-Fi &amp; Fantasy\Readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
