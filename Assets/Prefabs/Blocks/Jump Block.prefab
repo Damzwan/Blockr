@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1827082146784471694}
   m_Layer: 7
   m_Name: Jump Block
-  m_TagString: Interactable
+  m_TagString: Body Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3797f837e6154346a4b362cf83e0a5d, type: 2}
+  - {fileID: 2100000, guid: d254c7ae4fcb0f34f96e1e3bc64f598c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

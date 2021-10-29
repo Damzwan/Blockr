@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBlock : MonoBehaviour, InteractableBlock
+public class SpeedBlock : MonoBehaviour, IInteractableBlock
 {
     public float speedAmplifier = 2f;
 

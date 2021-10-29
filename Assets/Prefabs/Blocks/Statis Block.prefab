@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3867147499352367766}
   m_Layer: 7
   m_Name: Statis Block
-  m_TagString: Interactable
+  m_TagString: Body Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

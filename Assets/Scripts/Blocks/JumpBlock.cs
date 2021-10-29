@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpBlock : MonoBehaviour, InteractableBlock
+public class JumpBlock : MonoBehaviour, IInteractableBlock
 {
     public float jumpForce = 10f;
 

@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Body Interactable
+  - Feet Interactable
   - Interactable
   layers:
   - Default

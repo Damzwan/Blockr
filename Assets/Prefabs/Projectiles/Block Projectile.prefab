@@ -126,4 +126,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockToSpawn: {fileID: 4618686297102725034, guid: 81407cb5c2b7a924a825c114ae0d013d, type: 3}
-  minShootDistance: 1
