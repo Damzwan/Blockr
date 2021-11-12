@@ -20,6 +20,10 @@ PrefabInstance:
       value: Jump Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 8553232220313044803, guid: c284f98780eed8642b2da79d7ca484b1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553232220313044803, guid: c284f98780eed8642b2da79d7ca484b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d254c7ae4fcb0f34f96e1e3bc64f598c, type: 2}

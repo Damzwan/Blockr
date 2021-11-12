@@ -30,12 +30,12 @@ public class BlockProjectile : MonoBehaviour
         alreadyHit = true;
         Destroy(gameObject);
 
-        if (blockToSpawn is null) Destroy(other.gameObject);
+        if (blockToSpawn == null) Destroy(other.gameObject);
         else
         {
             var block = Instantiate(blockToSpawn, getSpawnPosition(other), other.transform.rotation);
             block.transform.parent = other.transform;
-            other.GetComponent<IBlock>().onBlockSpawned(block);
+            other.GetComponent<IBlock>()?.onBlockSpawned(block);
         }
     }
 

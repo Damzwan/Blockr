@@ -7,6 +7,7 @@ TagManager:
   - Body Interactable
   - Feet Interactable
   - Interactable
+  - Fire
   layers:
   - Default
   - TransparentFX

@@ -131,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
     void teleport()
     {
         if (teleportBlock is null) return;
+        var velocity = cc.velocity;
         cc.enabled = false;
         Destroy(teleportBlock);
         transform.position = teleportBlock.transform.position;
